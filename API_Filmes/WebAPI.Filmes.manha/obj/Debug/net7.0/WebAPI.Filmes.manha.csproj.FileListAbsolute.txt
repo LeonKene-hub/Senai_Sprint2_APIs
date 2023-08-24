@@ -31,3 +31,8 @@ C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\b
 C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\obj\Debug\net7.0\WebAPI.Filmes.manha.csproj.CopyComplete
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\obj\Debug\net7.0\WebAPI.Filmes.manha.MvcApplicationPartsAssemblyInfo.cs

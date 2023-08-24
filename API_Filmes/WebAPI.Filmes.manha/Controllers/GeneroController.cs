@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Filmes.manha.Domains;
 using WebAPI.Filmes.manha.Interfaces;
 using WebAPI.Filmes.manha.Repositories;
 
@@ -52,6 +53,29 @@ namespace WebAPI.Filmes.manha.Controllers
             {
                 //retorna um status code BasRequest(400) e a mensagem do erro
                 return BadRequest(erro);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que aciona o metodo de cadastro de genero
+        /// </summary>
+        /// <param name="novoGenero">Objeto recebido na requisicao</param>
+        /// <returns>status code 201(created)</returns>
+        [HttpPost]
+        public IActionResult Post(GeneroDomain novoGenero)
+        {
+            try
+            {
+                //Fazeno a chamada para o metodo cadastrar passando o objeto como parametro
+                _generoRepository.Cadastrar(novoGenero);
+                //retorna o status code 201 - created
+                return StatusCode(201);
+
+            }
+            catch (Exception erro)
+            {
+                //retorna status code 400 (BadRequest) e a mensagem de erro
+                return BadRequest(erro.Message);
             }
         }
     }
