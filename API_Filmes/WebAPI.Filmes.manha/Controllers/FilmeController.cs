@@ -9,7 +9,7 @@ namespace WebAPI.Filmes.manha.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class FilmeController : ControllerBase
+    public class FilmeController : Controller
     {
         private IFilmeRepository _filmeRepository { get; set; }
 
@@ -20,7 +20,7 @@ namespace WebAPI.Filmes.manha.Controllers
 
         [HttpGet]
 
-    public IActionResult Get()
+        public IActionResult Get()
         {
             try
             {

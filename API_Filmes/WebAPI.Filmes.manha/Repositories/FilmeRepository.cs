@@ -7,25 +7,36 @@ namespace WebAPI.Filmes.manha.Repositories
     public class FilmeRepository : IFilmeRepository
     {
         private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = Filmes; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+
+        //**************************************  Atualizar Id corpo  **************************************
+
         public void AtualizarIdCorpo(FilmeDomain novoFilme)
         {
             throw new NotImplementedException();
         }
+
+        //**************************************  Atualizar Id URL  **************************************
 
         public void AtualizarIdRUL(int id, FilmeDomain filme)
         {
             throw new NotImplementedException();
         }
 
+        //**************************************  Buscar por ID  **************************************
+
         public FilmeDomain BuscarPorId(int id)
         {
             throw new NotImplementedException();
         }
 
+        //**************************************  Cadastrar filme  **************************************
+
         public void Cadastrar(FilmeDomain novoFilme)
         {
             throw new NotImplementedException();
         }
+
+        //**************************************  Deletar  **************************************
 
         public void Deletar(int id)
         {

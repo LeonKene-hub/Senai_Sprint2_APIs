@@ -34,6 +34,8 @@ namespace WebAPI.Filmes.manha.Controllers
             _generoRepository = new GeneroRepository();
         }
 
+        //**************************************** GET ****************************************
+
         /// <summary>
         /// Endpoint que aciona o metodo Listar todos no repositorio e retorna a resposta para o usuario (front-end)
         /// </summary>
@@ -56,6 +58,8 @@ namespace WebAPI.Filmes.manha.Controllers
             }
         }
 
+        //**************************************** POST ****************************************
+
         /// <summary>
         /// Endpoint que aciona o metodo de cadastro de genero
         /// </summary>
@@ -75,6 +79,24 @@ namespace WebAPI.Filmes.manha.Controllers
             catch (Exception erro)
             {
                 //retorna status code 400 (BadRequest) e a mensagem de erro
+                return BadRequest(erro.Message);
+            }
+        }
+
+        //**************************************** DELETE ****************************************
+
+        [HttpDelete("{id}")]
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _generoRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
                 return BadRequest(erro.Message);
             }
         }

@@ -6,22 +6,43 @@ namespace WebAPI.Filmes.manha.Repositories
 {
     public class GeneroRepository : IGeneroRepository
     {
+        /// <summary>
+        /// String de conexão com o banco de dados que recebe os seguintes parametros
+        /// Data Source: Nome do servidor
+        /// Initial Catalog: Nome do bando de dados
+        /// 
+        /// --autenticação sql server:
+        /// User: Usuario de acesso ao banco
+        /// pwd: Senha de acesso ao banco
+        /// 
+        /// --autenticação windows:
+        /// Integrated Security = true
+        /// </summary>
         private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = Filmes; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+
+        //**************************************  Atualizar Id corpo  **************************************
+
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
             throw new NotImplementedException();
         }
+
+        //**************************************  Atualizar Id URL  **************************************
 
         public void AtualizarIdURL(int id, GeneroDomain genero)
         {
             throw new NotImplementedException();
         }
 
+        //**************************************  Buscar por ID  **************************************
+
         public GeneroDomain BuscarPorId(int id)
         {
             throw new NotImplementedException();
         }
-        
+
+        //**************************************  Cadastrar genero  **************************************
+
         /// <summary>
         /// Cadastrar um genero
         /// </summary>
@@ -45,10 +66,31 @@ namespace WebAPI.Filmes.manha.Repositories
             }
         }
 
+        //**************************************  Deletar  **************************************
+
+        /// <summary>
+        /// Deletar um genero
+        /// </summary>
+        /// <param name="id">id do genero a ser deletado</param>
+        /// <exception cref="NotImplementedException"></exception>
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querryDelete = "DELETE FROM Filme WHERE IdGenero = @IdDelete";
+
+                using (SqlCommand cmd = new SqlCommand(querryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("IdDelete", id);  
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
+
+        //**************************************  Listar todos os generos  **************************************
 
         /// <summary>
         /// Listar todos os objetos generos

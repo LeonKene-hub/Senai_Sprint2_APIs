@@ -9,6 +9,7 @@ namespace WebAPI.Filmes.manha.Domains
 
         [Required(ErrorMessage = "O titulo do filme e obrigatorio")]
         public string? Titulo { get; set; }
+
         public GeneroDomain? Genero { get; set; }
     }
 }

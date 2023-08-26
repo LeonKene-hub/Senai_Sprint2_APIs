@@ -7,9 +7,13 @@ namespace WebAPI.Filmes.manha.Domains
     /// </summary>
     public class GeneroDomain
     {
-        public int IdGenero { get; set; }
-
         [Required(ErrorMessage = "O nome do genero e obrigatorio")]
-       public string? Nome { get; set; }
+        public int IdGenero { get; set; }
+        public string? Nome { get; set; }
+
+        public static implicit operator GeneroDomain(FilmeDomain v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
