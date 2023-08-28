@@ -31,14 +31,61 @@ namespace WebAPI.Filmes.manha.Repositories
 
         public void AtualizarIdURL(int id, GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querryUpdateUrl = "UPDATE Genero SET Nome = @novoNome WHERE IdGenero = @IdGenero";
+
+                using (SqlCommand cmd = new SqlCommand(querryUpdateUrl, con))
+                {
+                    con.Open();
+
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+                    cmd.Parameters.AddWithValue("@novoNome", genero.Nome);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         //**************************************  Buscar por ID  **************************************
 
+        /// <summary>
+        /// Buscar um genero pelo seu id
+        /// </summary>
+        /// <param name="id">Id do objeto a ser buscado</param>
+        /// <returns>Objeto buscado ou null caso nao seja encontrado</returns>
         public GeneroDomain BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querrySearch = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero = @IdGenero";
+
+                con.Open();
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(querrySearch, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+
+                    rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
+                    {
+                        GeneroDomain generoBuscado = new GeneroDomain()
+                        {
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]),
+                            Nome = rdr["Nome"].ToString()
+                        };
+
+                        return generoBuscado;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
         }
 
         //**************************************  Cadastrar genero  **************************************
@@ -49,6 +96,7 @@ namespace WebAPI.Filmes.manha.Repositories
         /// <param name="novoGenero"> objeto com as informacoes que serao cadastrados</param>
         public void Cadastrar(GeneroDomain novoGenero)
         {
+
             //declara a conexao passando a string de conexao como parametro
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
@@ -77,7 +125,7 @@ namespace WebAPI.Filmes.manha.Repositories
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string querryDelete = "DELETE FROM Filme WHERE IdGenero = @IdDelete";
+                string querryDelete = "DELETE FROM Genero WHERE IdGenero = @IdDelete";
 
                 using (SqlCommand cmd = new SqlCommand(querryDelete, con))
                 {

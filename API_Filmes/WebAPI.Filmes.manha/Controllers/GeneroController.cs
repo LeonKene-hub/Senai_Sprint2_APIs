@@ -58,6 +58,33 @@ namespace WebAPI.Filmes.manha.Controllers
             }
         }
 
+        //**************************************** GET(id) ****************************************
+
+        /// <summary>
+        /// Endpoint que aciona o metodo BuscarId
+        /// </summary>
+        /// <param name="id">Id do genero bucado</param>
+        /// <returns>o genero buscado</returns>
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(id);
+
+                if (generoBuscado == null)
+                {
+                    return NotFound("Nenhum genero foi encontrado!");
+                }
+
+                return Ok(generoBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+        
         //**************************************** POST ****************************************
 
         /// <summary>
@@ -80,6 +107,20 @@ namespace WebAPI.Filmes.manha.Controllers
             {
                 //retorna status code 400 (BadRequest) e a mensagem de erro
                 return BadRequest(erro.Message);
+            }
+        }
+        //**************************************** PUT ****************************************
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, GeneroDomain atualizadoGenero)
+        {
+            try
+            {
+                _generoRepository.AtualizarIdURL(id, atualizadoGenero);
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
             }
         }
 
