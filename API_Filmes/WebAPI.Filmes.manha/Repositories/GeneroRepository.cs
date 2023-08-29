@@ -24,7 +24,20 @@ namespace WebAPI.Filmes.manha.Repositories
 
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querryUpdateBody = "UPDATE Genero SET Nome = @novoNome WHERE IdGenero = @IdBuscado";
+
+                using (SqlCommand cmd = new SqlCommand(querryUpdateBody, con))
+                {
+                    con.Open();
+
+                    cmd.Parameters.AddWithValue("@IdBuscado", genero.IdGenero);
+                    cmd.Parameters.AddWithValue("@novoNome", genero.Nome);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         //**************************************  Atualizar Id URL  **************************************

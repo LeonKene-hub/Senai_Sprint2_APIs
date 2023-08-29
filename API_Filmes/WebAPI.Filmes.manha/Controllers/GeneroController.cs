@@ -116,7 +116,27 @@ namespace WebAPI.Filmes.manha.Controllers
             try
             {
                 _generoRepository.AtualizarIdURL(id, atualizadoGenero);
-                return StatusCode(200);
+                return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+        //**************************************** PUT ****************************************
+
+        /// <summary>
+        /// Endpoint que aciona o metodo atualizar id corpo
+        /// </summary>
+        /// <param name="generoAtualizar"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult Put(GeneroDomain generoAtualizar)
+        {
+            try
+            {
+                _generoRepository.AtualizarIdCorpo(generoAtualizar);
+                return StatusCode(204);
             }
             catch (Exception erro)
             {
