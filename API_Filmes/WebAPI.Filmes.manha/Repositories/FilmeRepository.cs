@@ -12,24 +12,43 @@ namespace WebAPI.Filmes.manha.Repositories
 
         public void AtualizarIdCorpo(FilmeDomain novoFilme)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querryUpdateBody = "UPDATE Filme SET Titulo = @Titulo, IdGenero = @IdGenero WHERE IdFilme = @IdBuscado";
+
+                using (SqlCommand cmd = new SqlCommand(querryUpdateBody, con))
+                {
+                    con.Open();
+
+                    cmd.Parameters.AddWithValue("@Titulo", novoFilme.Titulo);
+                    cmd.Parameters.AddWithValue("@IdGenero", novoFilme.IdGenero);
+                    cmd.Parameters.AddWithValue("@IdBuscado", novoFilme.IdFilme);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         //**************************************  Atualizar Id URL  **************************************
 
+        /// <summary>
+        /// Atualiza o filme buscado atraves do ID
+        /// </summary>
+        /// <param name="id">ID do filme a ser buscado</param>
+        /// <param name="filme">Filme com as novas informações</param>
         public void AtualizarIdRUL(int id, FilmeDomain filme)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string querryUpdateUrl = "UPDATE Filme SET Titulo = @Titulo, IdGenero = @IdGenero WHERE IdFilme = @IdFilme";
+                string querryUpdateUrl = "UPDATE Filme SET Titulo = @Titulo, IdGenero = @IdGenero WHERE IdFilme = @IdBuscado";
 
-                using (SqlCommand cmd = new SqlCommand(querryUpdateUrl,con))
+                using (SqlCommand cmd = new SqlCommand(querryUpdateUrl, con))
                 {
-                    cmd.Parameters.AddWithValue("@Titulo",filme.Titulo);
-                    cmd.Parameters.AddWithValue("@IdGenero", filme.Titulo);
-                    cmd.Parameters.AddWithValue("@IdFilme", filme.IdFilme);
-
                     con.Open();
+
+                    cmd.Parameters.AddWithValue("@Titulo", filme.Titulo);
+                    cmd.Parameters.AddWithValue("@IdGenero", filme.IdGenero);
+                    cmd.Parameters.AddWithValue("@IdBuscado", id);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -82,7 +101,7 @@ namespace WebAPI.Filmes.manha.Repositories
         /// <summary>
         /// Cadastra um novo filme (objeto) com as informações inseridas
         /// </summary>
-        /// <param name="novoFilme"></param>
+        /// <param name="novoFilme">Filme a ser cadastrado</param>
         public void Cadastrar(FilmeDomain novoFilme)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -91,7 +110,7 @@ namespace WebAPI.Filmes.manha.Repositories
 
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand(querryInsert,con))
+                using (SqlCommand cmd = new SqlCommand(querryInsert, con))
                 {
                     cmd.Parameters.AddWithValue("@IdGenero", novoFilme.IdGenero);
                     cmd.Parameters.AddWithValue("@Titulo", novoFilme.Titulo);
@@ -103,6 +122,10 @@ namespace WebAPI.Filmes.manha.Repositories
 
         //**************************************  Deletar  **************************************
 
+        /// <summary>
+        /// Deleta o genero que tem o ID o informado
+        /// </summary>
+        /// <param name="id">ID do filme a ser deletado</param>
         public void Deletar(int id)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -121,6 +144,7 @@ namespace WebAPI.Filmes.manha.Repositories
         }
 
         //**************************************  ListarTodos  **************************************
+
         /// <summary>
         /// Listar todos os objetos filmes
         /// </summary>
@@ -139,9 +163,9 @@ namespace WebAPI.Filmes.manha.Repositories
                 using (SqlCommand cmd = new SqlCommand(querrySelectAll, con))
                 {
                     rdr = cmd.ExecuteReader();
-                    
-                    while(rdr.Read())
-                    { 
+
+                    while (rdr.Read())
+                    {
                         FilmeDomain filme = new FilmeDomain();
 
                         filme.IdFilme = Convert.ToInt32(rdr[0]);
@@ -154,7 +178,7 @@ namespace WebAPI.Filmes.manha.Repositories
                 }
 
             }
-                return listaFilmes;
+            return listaFilmes;
         }
     }
 }

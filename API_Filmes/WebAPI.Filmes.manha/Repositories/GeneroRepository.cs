@@ -22,6 +22,10 @@ namespace WebAPI.Filmes.manha.Repositories
 
         //**************************************  Atualizar Id corpo  **************************************
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="genero"></param>
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -42,6 +46,11 @@ namespace WebAPI.Filmes.manha.Repositories
 
         //**************************************  Atualizar Id URL  **************************************
 
+        /// <summary>
+        /// Atualiza o genero buscado atraves do ID informado
+        /// </summary>
+        /// <param name="id">ID do genero a ser atualizado</param>
+        /// <param name="genero">ID com as novas informações</param>
         public void AtualizarIdURL(int id, GeneroDomain genero)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))

@@ -39,7 +39,7 @@ namespace WebAPI.Filmes.manha.Controllers
         /// <summary>
         /// Endpoint que aciona o metodo Listar todos no repositorio e retorna a resposta para o usuario (front-end)
         /// </summary>
-        /// <returns></returns>
+        /// <returns>lista todos os generos cadastrados</returns>
         [HttpGet]
         public IActionResult Get() 
         {
@@ -110,6 +110,12 @@ namespace WebAPI.Filmes.manha.Controllers
             }
         }
         //**************************************** PUT ****************************************
+        /// <summary>
+        /// Endpoint que aciona o metodo Atualizar por ID 
+        /// </summary>
+        /// <param name="id">ID do genero a ser buscado e atualizado</param>
+        /// <param name="atualizadoGenero">Genero com novas informações</param>
+        /// <returns>Atualiza o genero</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, GeneroDomain atualizadoGenero)
         {
@@ -128,8 +134,8 @@ namespace WebAPI.Filmes.manha.Controllers
         /// <summary>
         /// Endpoint que aciona o metodo atualizar id corpo
         /// </summary>
-        /// <param name="generoAtualizar"></param>
-        /// <returns></returns>
+        /// <param name="generoAtualizar">genero com novas informações</param>
+        /// <returns>genero atualizado</returns>
         [HttpPut]
         public IActionResult Put(GeneroDomain generoAtualizar)
         {
@@ -146,8 +152,12 @@ namespace WebAPI.Filmes.manha.Controllers
 
         //**************************************** DELETE ****************************************
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de deletar id genero
+        /// </summary>
+        /// <param name="id">ID do genero a ser deletado</param>
+        /// <returns>genero deletado</returns>
         [HttpDelete("{id}")]
-
         public IActionResult Delete(int id)
         {
             try

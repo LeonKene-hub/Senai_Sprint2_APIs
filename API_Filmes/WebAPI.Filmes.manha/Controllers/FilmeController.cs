@@ -19,6 +19,7 @@ namespace WebAPI.Filmes.manha.Controllers
         }
 
         //******************************************** GET ********************************************
+
         /// <summary>
         /// Endpoint que aciona o metodo de listar todos os filmes
         /// </summary>
@@ -39,6 +40,7 @@ namespace WebAPI.Filmes.manha.Controllers
         }
 
         //******************************************** GET (id) ********************************************
+
         /// <summary>
         /// Endpoint que aciona o metodo de buscar de filme pelo seu ID
         /// </summary>
@@ -65,6 +67,7 @@ namespace WebAPI.Filmes.manha.Controllers
         }
 
         //******************************************** POST ********************************************
+
         /// <summary>
         /// Endpoint que aciona o metodo de cadastro de filmes
         /// </summary>
@@ -87,6 +90,11 @@ namespace WebAPI.Filmes.manha.Controllers
 
         //******************************************** DELETE ********************************************
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de deletar
+        /// </summary>
+        /// <param name="id">ID do filme a ser buscado</param>
+        /// <returns>Deleta o filme</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -103,12 +111,39 @@ namespace WebAPI.Filmes.manha.Controllers
 
         //******************************************** PUT ********************************************
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de atualizar atraves do ID
+        /// </summary>
+        /// <param name="id">ID do filme a ser atualizado</param>
+        /// <param name="filme">Filme a ser atualizado, com novas informações inseridas</param>
+        /// <returns>atualiza o filme</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, FilmeDomain filme)
         {
             try
             {
                 _filmeRepository.AtualizarIdRUL(id, filme);
+                return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
+        //******************************************** PUT ********************************************
+
+        /// <summary>
+        /// Endpoint que aciona o metodo de atualizar pelo corpo
+        /// </summary>
+        /// <param name="filme">filme com as informações novas</param>
+        /// <returns>atualiza o filme</returns>
+        [HttpPut]
+        public IActionResult Put(FilmeDomain filme)
+        {
+            try
+            {
+                _filmeRepository.AtualizarIdCorpo(filme);
                 return StatusCode(204);
             }
             catch (Exception erro)
