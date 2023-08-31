@@ -91,7 +91,7 @@ namespace WebAPI.Filmes.manha.Repositories
                     }
                     else
                     {
-                        return null;
+                        return null!;
                     }
                 }
             }

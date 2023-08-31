@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Filmes.manha.Domains;
 using WebAPI.Filmes.manha.Interfaces;
 using WebAPI.Filmes.manha.Repositories;
 
@@ -7,6 +8,7 @@ namespace WebAPI.Filmes.manha.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class UsuarioController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
@@ -22,8 +24,13 @@ namespace WebAPI.Filmes.manha.Controllers
         {
             try
             {
-                _usuarioRepository.Login(email, senha);
-                return StatusCode(200);
+                UsuarioDomain usuarioBuscado = _usuarioRepository.Login(email, senha);
+
+                if (usuarioBuscado == null)
+                {
+                    return NotFound("Usuario não encontrado");
+                }
+                return Ok(usuarioBuscado);
             }
             catch (Exception erro)
             {
