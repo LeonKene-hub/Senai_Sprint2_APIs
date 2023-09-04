@@ -10,6 +10,10 @@ namespace WebAPI.Filmes.manha.Repositories
 
         //**************************************  Atualizar Id corpo  **************************************
 
+        /// <summary>
+        /// Atualiza o filme por inteiro
+        /// </summary>
+        /// <param name="novoFilme">Filme que sera atualizado</param>
         public void AtualizarIdCorpo(FilmeDomain novoFilme)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))

@@ -7,6 +7,13 @@ namespace WebAPI.Filmes.manha.Repositories
     public class UsuarioRepository : IUsuarioRepository
     {
         private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = Filmes; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+
+        /// <summary>
+        /// Metodo de login que exibe o encontrado atraves do email e senha
+        /// </summary>
+        /// <param name="email">Email do usuario</param>
+        /// <param name="senha">Senha do usuario</param>
+        /// <returns>Exibe o usuario encontrado</returns>
         public UsuarioDomain Login(string email, string senha)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -31,7 +38,6 @@ namespace WebAPI.Filmes.manha.Repositories
                             Email = rdr["Email"].ToString()!,
                             Permissao = Convert.ToBoolean(rdr["Permissao"])
                         };
-
                         return usuarioEncontrado;
                     }
                     else

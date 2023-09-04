@@ -98,6 +98,12 @@
             <param name="id">ID do genero a ser deletado</param>
             <returns>genero deletado</returns>
         </member>
+        <member name="M:WebAPI.Filmes.manha.Controllers.UsuarioController.Login(WebAPI.Filmes.manha.Domains.UsuarioDomain)">
+            <summary>
+            Endpoint que aciona o metodo de cadastro
+            </summary>
+            <returns>Usuario que contem os atributos inseridos</returns>
+        </member>
         <member name="T:WebAPI.Filmes.manha.Domains.GeneroDomain">
             <summary>
             Classe que representa a entidade (tabela) Genero
@@ -185,6 +191,12 @@
             <param name="id">id do objeto a ser atualizado</param>
             <returns>Objeto buscado</returns>
         </member>
+        <member name="M:WebAPI.Filmes.manha.Repositories.FilmeRepository.AtualizarIdCorpo(WebAPI.Filmes.manha.Domains.FilmeDomain)">
+            <summary>
+            Atualiza o filme por inteiro
+            </summary>
+            <param name="novoFilme">Filme que sera atualizado</param>
+        </member>
         <member name="M:WebAPI.Filmes.manha.Repositories.FilmeRepository.AtualizarIdRUL(System.Int32,WebAPI.Filmes.manha.Domains.FilmeDomain)">
             <summary>
             Atualiza o filme buscado atraves do ID
@@ -269,6 +281,14 @@
             Listar todos os objetos generos
             </summary>
             <returns> Lista de objetos </returns>
+        </member>
+        <member name="M:WebAPI.Filmes.manha.Repositories.UsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Metodo de login que exibe o encontrado atraves do email e senha
+            </summary>
+            <param name="email">Email do usuario</param>
+            <param name="senha">Senha do usuario</param>
+            <returns>Exibe o usuario encontrado</returns>
         </member>
     </members>
 </doc>
