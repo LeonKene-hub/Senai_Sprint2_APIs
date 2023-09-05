@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Filmes.manha.Domains;
 using WebAPI.Filmes.manha.Interfaces;
@@ -16,6 +17,8 @@ namespace WebAPI.Filmes.manha.Controllers
 
     //define que o tipo de resposta da API sera no formato JSON
     [Produces("application/json")]
+
+    [Authorize]
 
     //Metodo controlador que herda da controler base
     //onde sera criado os endpoints (rotas)
@@ -41,6 +44,7 @@ namespace WebAPI.Filmes.manha.Controllers
         /// </summary>
         /// <returns>lista todos os generos cadastrados</returns>
         [HttpGet]
+        [Authorize(Roles = "True,False")]
         public IActionResult Get() 
         {
             try
@@ -84,7 +88,7 @@ namespace WebAPI.Filmes.manha.Controllers
                 return BadRequest(erro);
             }
         }
-        
+
         //**************************************** POST ****************************************
 
         /// <summary>
@@ -93,6 +97,7 @@ namespace WebAPI.Filmes.manha.Controllers
         /// <param name="novoGenero">Objeto recebido na requisicao</param>
         /// <returns>status code 201(created)</returns>
         [HttpPost]
+        [Authorize(Roles = "True")]
         public IActionResult Post(GeneroDomain novoGenero)
         {
             try

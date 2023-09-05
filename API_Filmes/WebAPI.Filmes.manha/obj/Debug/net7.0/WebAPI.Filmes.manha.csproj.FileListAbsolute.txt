@@ -38,3 +38,11 @@ C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\b
 C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\obj\Debug\net7.0\WebAPI.Filmes.manha.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\WebAPI.Filmes.manha.xml
 C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\obj\Debug\net7.0\WebAPI.Filmes.manha.xml
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\56026708820\Desktop\Senai_Sprint2_APIs\API_Filmes\WebAPI.Filmes.manha\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
