@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai.inlock.webApi</name>
+    </assembly>
+    <members>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.Cadastrar(senai.inlock.webApi.Domains.EstudioDomain)">
+            <summary>
+            Cadastrar um estudio (objeto)
+            </summary>
+            <param name="novoEstudio">objeto do estudio com os dados</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.Deletar(System.Int32)">
+            <summary>
+            Deletar um estudio (int id)
+            </summary>
+            <param name="id">id do objeto a ser deletado</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.ListarTodos">
+            <summary>
+            Lista e exibe todos os estudios existentes
+            </summary>
+            <returns>lista de estudios</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.ListarTodos">
+            <summary>
+            Lista e exibe todos os jogos existentes no banco de dados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca o jogo desejado por id
+            </summary>
+            <param name="id">id do jogo a ser buscado</param>
+            <returns>jogo encontrado</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.Cadastrar(senai.inlock.webApi.Domains.JogoDomain)">
+            <summary>
+            Cadastra um novo jogo (objeto)
+            </summary>
+            <param name="novoJogo">objeto do jogo com todas as informacoes</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um jogo atraves do seu id
+            </summary>
+            <param name="id">id do jogo a ser deletado</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.ITipoUsuarioRepository.Cadastrar(senai.inlock.webApi.Domains.TiposUsuarioDomain)">
+            <summary>
+            Cadastra um novo tipo de usuario
+            </summary>
+            <param name="novoTipo">objeto do tipo de usuario com todas as informacoes</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.ITipoUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta o tipo atraves do seu id
+            </summary>
+            <param name="id">id do tipo a ser deletado</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.ITipoUsuarioRepository.ListarTodos">
+            <summary>
+            Lista e exibe todos os tipos de usuario existente
+            </summary>
+            <returns>lista de tipo</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IUsuarioRepository.ListarTodos">
+            <summary>
+            Lista e exibe os usuarios existente
+            </summary>
+            <returns>lista de usuarios</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IUsuarioRepository.Cadastrar(senai.inlock.webApi.Domains.UsuarioDomain)">
+            <summary>
+            Cadastra um novo usuario (objeto)
+            </summary>
+            <param name="novoUsuario">objeto com as informacoes do novo usuario</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuario atraves do seu id
+            </summary>
+            <param name="id">id do usuario a ser deletado</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Loga em um usuario ja existente
+            </summary>
+            <param name="email">email do usuario registrado</param>
+            <param name="senha">senha do usuario registrado</param>
+            <returns>login e permissao de acesso</returns>
+        </member>
+    </members>
+</doc>

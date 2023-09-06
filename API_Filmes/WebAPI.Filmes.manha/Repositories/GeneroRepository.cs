@@ -151,7 +151,7 @@ namespace WebAPI.Filmes.manha.Repositories
 
                 using (SqlCommand cmd = new SqlCommand(querryDelete, con))
                 {
-                    cmd.Parameters.AddWithValue("IdDelete", id);  
+                    cmd.Parameters.AddWithValue("@IdDelete", id);  
 
                     con.Open();
 
