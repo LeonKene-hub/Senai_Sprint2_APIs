@@ -9,13 +9,13 @@ namespace senai.inlock.webApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class JogoController : ControllerBase
+    public class TipoUsuarioController : ControllerBase
     {
-        private IJogoRepository _jogoRepository { get; set; }
+        private ITipoUsuarioRepository _tipoUsuarioRepository {  get; set; }
 
-        public JogoController()
+        public TipoUsuarioController()
         {
-            _jogoRepository = new JogoRepository();
+                _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
         [HttpGet]
@@ -23,22 +23,8 @@ namespace senai.inlock.webApi.Controllers
         {
             try
             {
-                List<Domains.JogoDomain> listaJogos = _jogoRepository.ListarTodos();
-                return Ok(listaJogos);
-            }
-            catch (Exception erro)
-            {
-                return BadRequest(erro);
-            }
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult BuscarId(int id)
-        {
-            try
-            {
-                JogoDomain jogo = _jogoRepository.BuscarPorId(id);
-                return Ok(jogo);
+                List<Domains.TiposUsuarioDomain> listaTipos = _tipoUsuarioRepository.ListarTodos();
+                return Ok(listaTipos);
             }
             catch (Exception erro)
             {
@@ -47,16 +33,16 @@ namespace senai.inlock.webApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(JogoDomain novoJogo)
+        public IActionResult Cadastrar(TiposUsuarioDomain novoTipo)
         {
             try
             {
-                _jogoRepository.Cadastrar(novoJogo);
+                _tipoUsuarioRepository.Cadastrar(novoTipo);
                 return StatusCode(201);
             }
             catch (Exception erro)
             {
-                return BadRequest(erro.Message);
+                return BadRequest(erro);
             }
         }
 
@@ -65,7 +51,7 @@ namespace senai.inlock.webApi.Controllers
         {
             try
             {
-                _jogoRepository.Deletar(id);
+                _tipoUsuarioRepository.Deletar(id);
                 return StatusCode(204);
             }
             catch (Exception erro)

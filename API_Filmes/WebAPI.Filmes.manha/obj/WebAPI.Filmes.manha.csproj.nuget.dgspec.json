@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\56026708820\\Desktop\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj": {}
+    "C:\\Users\\User\\OneDrive\\Área de Trabalho\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj": {}
   },
   "projects": {
-    "C:\\Users\\56026708820\\Desktop\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj": {
+    "C:\\Users\\User\\OneDrive\\Área de Trabalho\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\56026708820\\Desktop\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Área de Trabalho\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj",
         "projectName": "WebAPI.Filmes.manha",
-        "projectPath": "C:\\Users\\56026708820\\Desktop\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj",
-        "packagesPath": "C:\\Users\\56026708820\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\56026708820\\Desktop\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\obj\\",
+        "projectPath": "C:\\Users\\User\\OneDrive\\Área de Trabalho\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\WebAPI.Filmes.manha.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\OneDrive\\Área de Trabalho\\Senai_Sprint2_APIs\\API_Filmes\\WebAPI.Filmes.manha\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\56026708820\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
