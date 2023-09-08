@@ -6,6 +6,9 @@ using senai.inlock.webApi.Repositories;
 
 namespace senai.inlock.webApi.Controllers
 {
+    /// <summary>
+    /// Controlador de Jogo, suas https e exucução de metodos
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -13,11 +16,18 @@ namespace senai.inlock.webApi.Controllers
     {
         private IJogoRepository _jogoRepository { get; set; }
 
+        /// <summary>
+        /// Construtor que define ponte para exucução dos metodos
+        /// </summary>
         public JogoController()
         {
             _jogoRepository = new JogoRepository();
         }
 
+        /// <summary>
+        /// Lista todos os jogos
+        /// </summary>
+        /// <returns>lista de jogos</returns>
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -32,6 +42,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Buscar jogo pelo ID
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
+        /// <returns>jogo encontrado</returns>
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {
@@ -46,6 +61,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo jogo
+        /// </summary>
+        /// <param name="novoJogo">informações do novo jogo</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpPost]
         public IActionResult Cadastrar(JogoDomain novoJogo)
         {
@@ -60,6 +80,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um jogo atraves do seu ID
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpDelete]
         public IActionResult Deletar(int id)
         {

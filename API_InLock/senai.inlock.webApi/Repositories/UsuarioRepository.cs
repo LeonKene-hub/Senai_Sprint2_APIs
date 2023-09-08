@@ -4,9 +4,17 @@ using System.Data.SqlClient;
 
 namespace senai.inlock.webApi.Repositories
 {
+    /// <summary>
+    /// Repositorio de Usuario, contem metodos de manipulação de dados
+    /// </summary>
     public class UsuarioRepository : IUsuarioRepository
     {
         private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+
+        /// <summary>
+        /// Cadastra um novo usuario (objeto)
+        /// </summary>
+        /// <param name="novoUsuario">Novo usuario com dados preenchidos</param>
         public void Cadastrar(UsuarioDomain novoUsuario)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -22,6 +30,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Deleta um usuario existente do banco de dados atraves do seu ID
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
         public void Deletar(int id)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -39,6 +51,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista/Exibe todos os usuarios existentes
+        /// </summary>
+        /// <returns>lista de usuarios</returns>
         public List<UsuarioDomain> ListarTodos()
         {
             List<UsuarioDomain> usuarios = new List<UsuarioDomain>();
@@ -69,6 +85,12 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Login, realiza autenticação de usuario e suas permissões
+        /// </summary>
+        /// <param name="email">endereço email do usuario</param>
+        /// <param name="senha">senha definida pelo usuario</param>
+        /// <returns>objeto com informações do usuario</returns>
         public UsuarioDomain Login(string email, string senha)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))

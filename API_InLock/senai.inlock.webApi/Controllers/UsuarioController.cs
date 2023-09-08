@@ -10,6 +10,9 @@ using System.Security.Claims;
 
 namespace senai.inlock.webApi.Controllers
 {
+    /// <summary>
+    /// Controlador de Usuario, suas https e exucução de metodos
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -17,11 +20,18 @@ namespace senai.inlock.webApi.Controllers
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
 
+        /// <summary>
+        /// Construtor que define ponte para exucução dos metodos
+        /// </summary>
         public UsuarioController()
         {
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Lista todos os usuarios
+        /// </summary>
+        /// <returns>lista de usuarios</returns>
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -36,6 +46,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo usuario
+        /// </summary>
+        /// <param name="usuario">>informações do novo usuario</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpPost]
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
@@ -50,6 +65,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um usuario atraves do seu ID
+        /// </summary>
+        /// <param name="id">ID buscado</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -64,12 +84,17 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Login, realiza autenticação do usuario
+        /// </summary>
+        /// <param name="usuario">usuario com email e senha</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpPost]
         public IActionResult Login(UsuarioDomain usuario)
         {
             try
             {
-                UsuarioDomain usuarioBuscado = _usuarioRepository.Login(usuario.Email, usuario.Senha);
+                UsuarioDomain usuarioBuscado = _usuarioRepository.Login(usuario.Email!, usuario.Senha!);
 
                 if (usuarioBuscado == null)
                 {
@@ -79,7 +104,7 @@ namespace senai.inlock.webApi.Controllers
                 var claims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
+                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!),
                     new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
 
                     new Claim("Claim personalizada","Valor da Claim personalizada")

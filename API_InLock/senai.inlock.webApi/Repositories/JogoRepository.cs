@@ -4,10 +4,18 @@ using System.Data.SqlClient;
 
 namespace senai.inlock.webApi.Repositories
 {
+    /// <summary>
+    /// Repositorio de Jogo, contem os metodos de jogo
+    /// </summary>
     public class JogoRepository : IJogoRepository
     {
         private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
 
+        /// <summary>
+        /// Busca o jogo (objeto) atraves do ID informado
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
+        /// <returns>Jogo (objeto) encontrado</returns>
         public JogoDomain BuscarPorId(int id)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -43,6 +51,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo jogo (objeto)
+        /// </summary>
+        /// <param name="novoJogo">novo jogo (objeto) com os dados a ser inseridos</param>
         public void Cadastrar(JogoDomain novoJogo)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -51,6 +63,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Deleta um jogo (objeto) existente atraves do seu ID
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
         public void Deletar(int id)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -68,6 +84,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista/Exibe todos os jogos existentes
+        /// </summary>
+        /// <returns>lista de jogos</returns>
         public List<JogoDomain> ListarTodos()
         {
             List<JogoDomain> listaJogos = new List<JogoDomain>();

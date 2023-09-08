@@ -6,6 +6,9 @@ using senai.inlock.webApi.Repositories;
 
 namespace senai.inlock.webApi.Controllers
 {
+    /// <summary>
+    /// Controlador de TipoUsuario, suas https e exucução de metodos
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -13,11 +16,18 @@ namespace senai.inlock.webApi.Controllers
     {
         private ITipoUsuarioRepository _tipoUsuarioRepository {  get; set; }
 
+        /// <summary>
+        /// Construtor que define ponte para exucução dos metodos
+        /// </summary>
         public TipoUsuarioController()
         {
                 _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
+        /// <summary>
+        /// Lista todos os tipos de usuario
+        /// </summary>
+        /// <returns>lista de tipos de usuario</returns>
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -32,6 +42,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo Tipo de usuario
+        /// </summary>
+        /// <param name="novoTipo">informações do novo tipo</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpPost]
         public IActionResult Cadastrar(TiposUsuarioDomain novoTipo)
         {
@@ -46,6 +61,11 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um tipo atraves do seu ID
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
+        /// <returns>status code informando o resultado</returns>
         [HttpDelete]
         public IActionResult Deletar(int id)
         {

@@ -4,9 +4,17 @@ using System.Data.SqlClient;
 
 namespace senai.inlock.webApi.Repositories
 {
+    /// <summary>
+    /// Repositorio de Estudio, metodos de manipulação de dados de estudio
+    /// </summary>
     public class EstudioRepository : IEstudioRepository
     {
         private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+
+        /// <summary>
+        /// Cadastra um novo estudio (objeto)
+        /// </summary>
+        /// <param name="novoEstudio">novo estudio com dados preenchidos</param>
         public void Cadastrar(EstudioDomain novoEstudio)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -22,6 +30,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Deleta um estudio (objeto) existente no banco de dados
+        /// </summary>
+        /// <param name="id">ID a ser buscado</param>
         public void Deletar(int id)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -39,6 +51,10 @@ namespace senai.inlock.webApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista/Exibe todos os estudios existentes
+        /// </summary>
+        /// <returns>lista de objetos</returns>
         public List<EstudioDomain> ListarTodos()
         {
             List<EstudioDomain> listaEstudio = new List<EstudioDomain>();
