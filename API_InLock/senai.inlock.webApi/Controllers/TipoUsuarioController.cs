@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interfaces;
@@ -12,6 +13,7 @@ namespace senai.inlock.webApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class TipoUsuarioController : ControllerBase
     {
         private ITipoUsuarioRepository _tipoUsuarioRepository {  get; set; }
@@ -29,6 +31,7 @@ namespace senai.inlock.webApi.Controllers
         /// </summary>
         /// <returns>lista de tipos de usuario</returns>
         [HttpGet]
+        [Authorize(Roles = "1,2")]
         public IActionResult ListarTodos()
         {
             try
@@ -48,6 +51,7 @@ namespace senai.inlock.webApi.Controllers
         /// <param name="novoTipo">informações do novo tipo</param>
         /// <returns>status code informando o resultado</returns>
         [HttpPost]
+        [Authorize(Roles = "2")]
         public IActionResult Cadastrar(TiposUsuarioDomain novoTipo)
         {
             try
@@ -67,6 +71,7 @@ namespace senai.inlock.webApi.Controllers
         /// <param name="id">ID a ser buscado</param>
         /// <returns>status code informando o resultado</returns>
         [HttpDelete]
+        [Authorize(Roles = "2")]
         public IActionResult Deletar(int id)
         {
             try

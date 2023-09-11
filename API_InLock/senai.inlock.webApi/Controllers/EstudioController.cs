@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interfaces;
 using senai.inlock.webApi.Repositories;
+using System.Data;
 
 namespace senai.inlock.webApi.Controllers
 {
@@ -29,6 +31,7 @@ namespace senai.inlock.webApi.Controllers
         /// </summary>
         /// <returns>lista de estudios</returns>
         [HttpGet]
+        [Authorize(Roles = "1,2")]
         public IActionResult ListarTodos()
         {
             try
@@ -49,6 +52,7 @@ namespace senai.inlock.webApi.Controllers
         /// <param name="novoEstudio">informações do novo estudio</param>
         /// <returns>status code informando o resultado</returns>
         [HttpPost]
+        [Authorize(Roles = "2")]
         public IActionResult Cadastrar(EstudioDomain novoEstudio)
         {
             try
@@ -68,6 +72,7 @@ namespace senai.inlock.webApi.Controllers
         /// <param name="id">ID a ser buscado</param>
         /// <returns>status code informando o resultado</returns>
         [HttpDelete]
+        [Authorize(Roles = "2")]
         public IActionResult Delete(int id)
         {
             try

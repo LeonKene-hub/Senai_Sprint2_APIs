@@ -1,6 +1,7 @@
 ﻿using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interfaces;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace senai.inlock.webApi.Repositories
 {
@@ -9,7 +10,7 @@ namespace senai.inlock.webApi.Repositories
     /// </summary>
     public class JogoRepository : IJogoRepository
     {
-        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134";
 
         /// <summary>
         /// Busca o jogo (objeto) atraves do ID informado
@@ -59,7 +60,20 @@ namespace senai.inlock.webApi.Repositories
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string querryInsert = "INSERT INTO Jogo (IdEstudio, Nome, Descricao, DataLancamento, Valor) VALUES ('" +novoJogo.IdEstudio+ ", "+novoJogo.Nome+", "+novoJogo.Descricao+", "+novoJogo.DataLancamento+", "+novoJogo.Valor+"')";
+                string querryInsert = "INSERT INTO Jogo (IdEstudio, Nome, Descricao, DataLancamento, Valor) VALUES (@IdEstudio, @Nome, @Descricao, @DataLancamento, @Valor)";
+
+                using (SqlCommand cmd = new SqlCommand(querryInsert, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdEstudio", novoJogo.IdEstudio);
+                    cmd.Parameters.AddWithValue("@Nome", novoJogo.Nome);
+                    cmd.Parameters.AddWithValue("@Descricao", novoJogo.Descricao);
+                    cmd.Parameters.AddWithValue("@DataLancamento", novoJogo.DataLancamento);
+                    cmd.Parameters.AddWithValue("@Valor", novoJogo.Valor);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 

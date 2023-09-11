@@ -9,7 +9,7 @@ namespace senai.inlock.webApi.Repositories
     /// </summary>
     public class EstudioRepository : IEstudioRepository
     {
-        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134";
 
         /// <summary>
         /// Cadastra um novo estudio (objeto)

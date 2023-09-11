@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -33,6 +34,7 @@ namespace senai.inlock.webApi.Controllers
         /// </summary>
         /// <returns>lista de usuarios</returns>
         [HttpGet]
+        [Authorize(Roles = "2")]
         public IActionResult ListarTodos()
         {
             try
@@ -51,7 +53,8 @@ namespace senai.inlock.webApi.Controllers
         /// </summary>
         /// <param name="usuario">>informações do novo usuario</param>
         /// <returns>status code informando o resultado</returns>
-        [HttpPost]
+        [HttpPost("Cadastro")]
+        [Authorize(Roles = "2")]
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
             try
@@ -71,6 +74,7 @@ namespace senai.inlock.webApi.Controllers
         /// <param name="id">ID buscado</param>
         /// <returns>status code informando o resultado</returns>
         [HttpDelete]
+        [Authorize(Roles = "2")]
         public IActionResult Delete(int id)
         {
             try

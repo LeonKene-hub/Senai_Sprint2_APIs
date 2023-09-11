@@ -9,7 +9,7 @@ namespace senai.inlock.webApi.Repositories
     /// </summary>
     public class UsuarioRepository : IUsuarioRepository
     {
-        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134";
 
         /// <summary>
         /// Cadastra um novo usuario (objeto)
@@ -19,10 +19,14 @@ namespace senai.inlock.webApi.Repositories
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string querryInsert = "INSERT INTO Usuario(IdTipoUsuario, Email, Senha) VALUES('"+novoUsuario.IdTipoUsuario+", "+novoUsuario.Email+", "+novoUsuario.Senha+"')";
+                string querryInsert = "INSERT INTO Usuario(IdTipoUsuario, Email, Senha) VALUES(@IdTipoUsuario, @Email, @Senha)";
 
                 using (SqlCommand cmd = new SqlCommand(querryInsert, con))
                 {
+                    cmd.Parameters.AddWithValue("@IdTipoUsuario", novoUsuario.IdTipoUsuario);
+                    cmd.Parameters.AddWithValue("@Email", novoUsuario.Email);
+                    cmd.Parameters.AddWithValue("@Senha", novoUsuario.Senha);
+
                     con.Open();
 
                     cmd.ExecuteNonQuery();
@@ -61,7 +65,7 @@ namespace senai.inlock.webApi.Repositories
 
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string querryGetAll = "SELECT IdTipoUsuario, Email, Senha FROM Usuario";
+                string querryGetAll = "SELECT IdUsuario, IdTipoUsuario, Email, Senha FROM Usuario";
 
                 con.Open();
 
@@ -95,7 +99,7 @@ namespace senai.inlock.webApi.Repositories
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string querryLogin = "SELECT Email,Permissao FROM Usuario WHERE Email = @emailBuscado AND Senha = @senhaBuscado";
+                string querryLogin = "SELECT Email,IdTipoUsuario FROM Usuario WHERE Email = @emailBuscado AND Senha = @senhaBuscado";
 
                 con.Open();
 

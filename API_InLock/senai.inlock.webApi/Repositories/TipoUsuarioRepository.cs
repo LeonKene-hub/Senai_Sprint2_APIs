@@ -9,7 +9,7 @@ namespace senai.inlock.webApi.Repositories
     /// </summary>
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
-        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134; TrustServerCertificate = true";
+        private string stringConexao = "Data Source = NOTE20-S15; Initial Catalog = inlock_games_manha; User Id = sa; pwd = Senai@134";
 
         /// <summary>
         /// Cadastra um novo tipo de usuario (objeto)
