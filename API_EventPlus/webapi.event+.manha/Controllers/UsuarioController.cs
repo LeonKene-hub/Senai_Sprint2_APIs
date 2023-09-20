@@ -8,6 +8,7 @@ namespace webapi.event_.manha.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class UsuarioController : ControllerBase
     {
         private IUsuarioRepository _usuairoRepository;
@@ -32,7 +33,7 @@ namespace webapi.event_.manha.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(Guid id)
+        public IActionResult GetId(Guid id)
         {
             try
             {
@@ -53,6 +54,20 @@ namespace webapi.event_.manha.Controllers
             {
                 Usuario usuario = _usuairoRepository.BuscarPorEmail(email, senha);
                 return Ok(usuario);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _usuairoRepository.Deletar(id);
+                return StatusCode(204);
             }
             catch (Exception e)
             {

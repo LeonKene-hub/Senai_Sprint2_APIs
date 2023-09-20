@@ -82,7 +82,9 @@ namespace webapi.event_.manha.Repositories
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Usuario usuairoBuscado = _eventContext.Usuario.Find(id)!;
+            _eventContext.Usuario.Remove(usuairoBuscado);
+            _eventContext.SaveChanges();
         }
     }
 }
