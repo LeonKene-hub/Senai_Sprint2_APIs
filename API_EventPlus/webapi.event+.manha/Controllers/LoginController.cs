@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -16,11 +15,12 @@ namespace webapi.event_.manha.Controllers
     [Produces("application/json")]
     public class LoginController : ControllerBase
     {
-        private IUsuarioRepository _usuairoRepository;
+
+        private IUsuarioRepository _usuarioRepository;
 
         public LoginController()
         {
-            _usuairoRepository = new UsuarioRepository();
+            _usuarioRepository = new UsuarioRepository();
         }
 
         [HttpPost]
@@ -28,35 +28,40 @@ namespace webapi.event_.manha.Controllers
         {
             try
             {
-                Usuario usuarioBuscado = _usuairoRepository.BuscarPorEmail(usuario.Email!, usuario.Senha!);
+                Usuario usuarioBuscado = _usuarioRepository.BuscarPorEmail(usuario.Email!, usuario.Senha!);
 
                 if (usuarioBuscado == null)
                 {
-                    return StatusCode(401, "email ou senha invalidos");
+                    return StatusCode(401, "Email ou senha inválidos!");
                 }
 
-                //logica do token:
+                //lógica do token:
+
                 var claims = new[]
                 {
-                    new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
-                    new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Name, usuarioBuscado.Nome),
-                    new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.TiposUsuario.Titulo!)
+                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!),
+                    new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome!),
+                    new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.IdUsuario.ToString()),
+                    new Claim(ClaimTypes.Role,usuarioBuscado.TiposUsuario!.Titulo!)
                 };
 
-                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("event-webapi-chave-autenticacao"));
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("projeto-event-webapi-chave-autenticacao"));
 
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
-                    issuer: "webapi.event+.manha",
-                    audience: "webapi.event+.manha",
-                    claims: claims,
-                    expires: DateTime.Now.AddMinutes(5),
-                    signingCredentials: creds
+                        issuer: "webapi.event+.manha",
+                        audience: "webapi.event+.manha",
+                        claims: claims,
+                        expires: DateTime.Now.AddMinutes(5),
+                        signingCredentials: creds
                     );
 
-                return Ok(new {token = new JwtSecurityTokenHandler().WriteToken(token)});
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                });
+
             }
             catch (Exception e)
             {
