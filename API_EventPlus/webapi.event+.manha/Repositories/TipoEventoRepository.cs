@@ -6,46 +6,46 @@ namespace webapi.event_.manha.Repositories
 {
     public class TipoEventoRepository : ITipoEventoRepository
     {
-        private readonly EventContext ctx;
+        private readonly EventContext _eventContext;
 
         public TipoEventoRepository()
         {
-            ctx = new EventContext();
+            _eventContext = new EventContext();
         }
 
         public void Atualizar(Guid id, TiposEvento tipo)
         {
-            TiposEvento tipoBuscado = ctx.TiposEvento.Find(id)!;
+            TiposEvento tipoBuscado = _eventContext.TiposEvento.Find(id)!;
 
             if (tipoBuscado != null)
             {
                 tipoBuscado.Titulo = tipo.Titulo;
             }
-            ctx.Update(tipoBuscado);
-            ctx.SaveChanges();
+            _eventContext.Update(tipoBuscado);
+            _eventContext.SaveChanges();
         }
 
         public TiposEvento BuscarPorId(Guid id)
         {
-            return ctx.TiposEvento.FirstOrDefault(t => t.IdTipoEvento == id)!;
+            return _eventContext.TiposEvento.FirstOrDefault(t => t.IdTipoEvento == id)!;
         }
 
         public void Cadastrar(TiposEvento tipoEvento)
         {
-            ctx.TiposEvento.Add(tipoEvento);
-            ctx.SaveChanges();
+            _eventContext.TiposEvento.Add(tipoEvento);
+            _eventContext.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            TiposEvento tipoEvento = ctx.TiposEvento.FirstOrDefault(t => t.IdTipoEvento ==id)!;
-            ctx.TiposEvento.Remove(tipoEvento);
-            ctx.SaveChanges();
+            TiposEvento tipoEvento = _eventContext.TiposEvento.FirstOrDefault(t => t.IdTipoEvento ==id)!;
+            _eventContext.TiposEvento.Remove(tipoEvento);
+            _eventContext.SaveChanges();
         }
 
         public List<TiposEvento> Listar()
         {
-            return ctx.TiposEvento.ToList();
+            return _eventContext.TiposEvento.ToList();
         }
     }
 }
